@@ -1,0 +1,29 @@
+<h1 class="text-center font-bold text-xl mb-4">Todo list</h1>
+
+<div class="flex justify-center">
+  <a class="px-4 py-2 mb-4  mx-auto text-cyan-100 bg-cyan-700 rounded hover:bg-cyan-600 disabled:opacity-75"
+    routerLink="/form"> Add new task </a>
+</div>
+
+<div class="flex justify-center mx-1">
+  <span class="mx-1 p-1 rounded cursor-pointer" [ngClass]="{'border': taskView === 'All'}" (click)="onAllClick()">
+    All
+  </span>
+  <span class="mx-1 p-1 rounded cursor-pointer" [ngClass]="{'border': taskView === 'Active'}" (click)="onActiveClick()">
+    Active </span>
+  <span class="mx-1 p-1 rounded cursor-pointer" [ngClass]="{'border': taskView === 'Completed'}"
+    (click)="onCompletedClick()">
+    Completed </span>
+</div>
+
+<div *ngIf="taskView === 'All'">
+  <app-task *ngFor="let t of taskArray; index as i" [index]="i" [task]="t" [filter]="'All'"></app-task>
+</div>
+
+<div *ngIf="taskView === 'Active'">
+    <app-task *ngFor="let t of taskArray | filterTasks: 'Active'; index as i" [index]="i" [task]="t"></app-task>
+  </div>
+
+<div *ngIf="taskView === 'Completed'">
+  <app-task *ngFor="let t of taskArray | filterTasks: 'Completed'; index as i" [index]="i" [task]="t"></app-task>
+</div>

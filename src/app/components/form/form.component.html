@@ -1,0 +1,32 @@
+<form class="bg-slate-100 my-2 p-2 rounded border" (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+  <div class="">
+    <label for="task-name">Task name</label>
+    <input *ngIf="currentIndex.index !== null" type="text" class="px-2 border rounded w-[100%] outline-cyan-600 "
+      id="task-name" placeholder="Enter task name" ngModel name="task-name" [ngModel]="task.name" required>
+    <input *ngIf="currentIndex.index === null" type="text" class="px-2 border rounded w-[100%] outline-cyan-600 "
+      id="task-name" placeholder="Enter task name" ngModel name="task-name" required>
+    <div class="min-h-[24px]">
+      <small *ngIf="taskForm.invalid && taskForm.controls['task-name'].invalid && taskForm.controls['task-name'].dirty"
+        class="text-red-500 pl-2">Required
+        field</small>
+    </div>
+  </div>
+
+  <div class="">
+    <label for="task-descripton">Description</label>
+    <textarea *ngIf="currentIndex.index !== null" class="px-2 border rounded w-[100%] block outline-cyan-600"
+      id="task-descripton" placeholder="Enter descripton" ngModel name="task-descripton" [ngModel]="task.descripton"
+      required></textarea>
+    <textarea *ngIf="currentIndex.index === null" class="px-2 border rounded w-[100%] block outline-cyan-600"
+      id="task-descripton" placeholder="Enter descripton" ngModel name="task-descripton" required></textarea>
+    <div class="min-h-[24px]">
+      <small
+        *ngIf="taskForm.invalid && taskForm.controls['task-descripton'].invalid  && taskForm.controls['task-descripton'].dirty"
+        class="text-red-500 pl-2">Required
+        field</small>
+    </div>
+  </div>
+
+  <button [disabled]="taskForm.invalid" type="submit"
+    class="px-4 py-2 mb-4 block cursor-pointer mx-auto text-cyan-100 bg-cyan-700 rounded  disabled:cursor-auto hover:bg-cyan-600 disabled:opacity-75 ">Submit</button>
+</form>
