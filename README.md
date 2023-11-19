@@ -1,4 +1,4 @@
-# Тестовое -здание TodoApp
+# Тестовое задание - TodoApp
 
 https://todo-angular-7a407.web.app
 
